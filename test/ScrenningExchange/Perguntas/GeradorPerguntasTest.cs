@@ -16,42 +16,46 @@ public class GeradorPerguntasTest
     {
         // Arrange
         var g = GeradorPergunta.Create();
+        var perguntaId1 = Ulid.NewUlid();
+        var perguntaId2 = Ulid.NewUlid();
+        var perguntaId3 = Ulid.NewUlid();
+        var perguntaId4 = Ulid.NewUlid();
 
-        g.AddPergunta("1", Pergunta.Create(
+        g.AddPergunta(perguntaId1, Pergunta.Create(
                 "Qual país deseja fazer intercambio ?",
                 new string[] { "Brasil", "Canada", "USA" }
             )
         );
 
-        g.AddPergunta("2", Pergunta.Create(
+        g.AddPergunta(perguntaId2, Pergunta.Create(
                 "Qual Cidade ou Provincia",
                 new string[] { "Sao Paulo", "Rio de Janeiro" }
             )
         );
 
-        g.AddPergunta("3", Pergunta.Create(
+        g.AddPergunta(perguntaId3, Pergunta.Create(
                 "Qual Cidade ou Provincia",
                 new string[] { "Toronto", "Vancouver" }
             )
         );
 
-        g.AddPergunta("4", Pergunta.Create(
+        g.AddPergunta(perguntaId4, Pergunta.Create(
                 "Voce vai a trabalho ou estudo ?",
                 new string[] { "Trabalho", "Estudo" }
             )
         );
 
-        g.DefinirFluxo("1", "Brasil", "2");
-        g.DefinirFluxo("1", "Canada", "3");
-        g.DefinirFluxo("2", "Sao Paulo", "4");
+        g.DefinirFluxo(perguntaId1, "Brasil", perguntaId2);
+        g.DefinirFluxo(perguntaId1, "Canada", perguntaId3);
+        g.DefinirFluxo(perguntaId2, "Sao Paulo", perguntaId4);
 
-        g.IniciarPergunta("1");
+        g.IniciarPergunta(perguntaId1);
 
         var perguntaAtual = g.ExibirPerguntaAtual();
 
         Assert.That(perguntaAtual!.Texto, Is.EqualTo("Qual país deseja fazer intercambio ?"));
 
-        g.IniciarPergunta("4");
+        g.IniciarPergunta(perguntaId4);
         var perguntaSaoPaulo = g.ExibirPerguntaAtual();
 
         Assert.That(perguntaSaoPaulo!.Texto, Is.EqualTo("Voce vai a trabalho ou estudo ?"));

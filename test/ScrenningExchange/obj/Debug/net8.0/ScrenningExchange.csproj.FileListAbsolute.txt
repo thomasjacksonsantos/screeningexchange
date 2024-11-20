@@ -202,3 +202,4 @@ c:\Users\thoma\projetos\estudos\screeningexchange\test\ScrenningExchange\obj\Deb
 c:\Users\thoma\projetos\estudos\screeningexchange\test\ScrenningExchange\obj\Debug\net8.0\ScrenningExchange.pdb
 c:\Users\thoma\projetos\estudos\screeningexchange\test\ScrenningExchange\obj\Debug\net8.0\ScrenningExchange.genruntimeconfig.cache
 c:\Users\thoma\projetos\estudos\screeningexchange\test\ScrenningExchange\obj\Debug\net8.0\ref\ScrenningExchange.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\test\ScrenningExchange\bin\Debug\net8.0\Ulid.dll

@@ -20,3 +20,4 @@ c:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Domain\o
 c:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Domain\obj\Debug\net8.0\refint\ScreeningExchange.Domain.dll
 c:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Domain\obj\Debug\net8.0\ScreeningExchange.Domain.pdb
 c:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Domain\obj\Debug\net8.0\ref\ScreeningExchange.Domain.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Domain\obj\Debug\net8.0\ScreeningExchange.Domain.csproj.AssemblyReference.cache

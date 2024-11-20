@@ -3,28 +3,32 @@ namespace ScreeningExchange.Domain.Aggregates.PerguntasAggregate;
 
 public class GeradorPergunta
 {
-    private readonly Dictionary<string, Pergunta> perguntas = new();
-    private readonly Dictionary<(string, string), string> fluxo = new();
-    private string perguntaAtualId;
-    
-    private GeradorPergunta() { }
+    public Dictionary<Ulid, Pergunta> Perguntas { get; private set; }
+    public Dictionary<(Ulid, string), Ulid> Fluxo { get; set; }
+    private Ulid perguntaAtualId;
+
+    private GeradorPergunta()
+    {
+        Perguntas ??= new();
+        Fluxo ??= new();
+    }
 
     public void AddPergunta(
-        string id,
+        Ulid id,
         Pergunta pergunta
     )
-        => perguntas[id] = pergunta;
+        => Perguntas[id] = pergunta;
 
     public void DefinirFluxo(
-        string perguntaId,
+        Ulid perguntaId,
         string resposta,
-        string proximaPerguntaId
+        Ulid proximaPerguntaId
     )
-        => fluxo[(perguntaId, resposta)] = proximaPerguntaId;
+        => Fluxo[(perguntaId, resposta)] = proximaPerguntaId;
 
 
     public void IniciarPergunta(
-        string perguntaInicialId
+        Ulid perguntaInicialId
     )
         => perguntaAtualId = perguntaInicialId;
 
@@ -32,7 +36,7 @@ public class GeradorPergunta
         string resposta
     )
     {
-        if (fluxo.TryGetValue((perguntaAtualId, resposta), out string proximaPerguntaId))
+        if (Fluxo.TryGetValue((perguntaAtualId, resposta), out Ulid proximaPerguntaId))
             perguntaAtualId = proximaPerguntaId;
 
         return ExibirPerguntaAtual();
@@ -40,7 +44,7 @@ public class GeradorPergunta
 
     public Pergunta? ExibirPerguntaAtual()
     {
-        if (perguntas.TryGetValue(perguntaAtualId, out Pergunta pergunta))
+        if (Perguntas.TryGetValue(perguntaAtualId, out Pergunta pergunta))
             return pergunta;
 
         return null;
