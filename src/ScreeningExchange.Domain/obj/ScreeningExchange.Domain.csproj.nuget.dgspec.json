@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj": {}
+    "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj": {
+    "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj",
         "projectName": "ScreeningExchange.Domain",
-        "projectPath": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj",
+        "projectPath": "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj",
         "packagesPath": "C:\\Users\\thoma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\obj\\",
+        "outputPath": "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj",
+      "projectUniqueName": "c:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj",
       "projectName": "ScreeningExchange.Domain",
-      "projectPath": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj",
+      "projectPath": "c:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj",
       "packagesPath": "C:\\Users\\thoma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\obj\\",
+      "outputPath": "c:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config",

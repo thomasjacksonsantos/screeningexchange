@@ -49,6 +49,12 @@ public class GeradorPerguntasTest
 
         var perguntaAtual = g.ExibirPerguntaAtual();
 
-        Assert.Pass();
+        Assert.That(perguntaAtual!.Texto, Is.EqualTo("Qual país deseja fazer intercambio ?"));
+
+        g.IniciarPergunta("4");
+        var perguntaSaoPaulo = g.ExibirPerguntaAtual();
+
+        Assert.That(perguntaSaoPaulo!.Texto, Is.EqualTo("Voce vai a trabalho ou estudo ?"));
+
     }
 }

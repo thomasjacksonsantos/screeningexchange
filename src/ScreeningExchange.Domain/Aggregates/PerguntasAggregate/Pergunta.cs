@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace ScreeningExchange.Domain.Aggregates.PerguntasAggregate;
 
 public class Pergunta

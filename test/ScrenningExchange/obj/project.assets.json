@@ -1003,11 +1003,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\test\\ScrenningExchange\\ScrenningExchange.csproj",
+      "projectUniqueName": "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\test\\ScrenningExchange\\ScrenningExchange.csproj",
       "projectName": "ScrenningExchange",
-      "projectPath": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\test\\ScrenningExchange\\ScrenningExchange.csproj",
+      "projectPath": "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\test\\ScrenningExchange\\ScrenningExchange.csproj",
       "packagesPath": "C:\\Users\\thoma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\test\\ScrenningExchange\\obj\\",
+      "outputPath": "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\test\\ScrenningExchange\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1025,8 +1025,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj": {
-              "projectPath": "C:\\Users\\thoma\\projetos\\ScreeningExchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj"
+            "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj": {
+              "projectPath": "C:\\Users\\thoma\\projetos\\estudos\\screeningexchange\\src\\ScreeningExchange.Domain\\ScreeningExchange.Domain.csproj"
             }
           }
         }
