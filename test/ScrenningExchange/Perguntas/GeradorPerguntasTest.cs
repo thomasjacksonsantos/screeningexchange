@@ -1,10 +1,11 @@
 
 
-using ScreeningExchange.Domain.Aggregates.PerguntasAggregate;
+using ScreeningExchange.Domain.Aggregates.QuestionsAggregate;
+using ScreeningExchange.Domain.Aggregates.ValueObjects;
 
-namespace ScrenningExchange.Perguntas;
+namespace ScrenningExchange.Questions;
 
-public class GeradorPerguntasTest
+public class GeradorQuestionsTest
 {
     [SetUp]
     public void Setup()
@@ -15,50 +16,50 @@ public class GeradorPerguntasTest
     public void Test1()
     {
         // Arrange
-        var g = GeradorPergunta.Create();
-        var perguntaId1 = Ulid.NewUlid();
-        var perguntaId2 = Ulid.NewUlid();
-        var perguntaId3 = Ulid.NewUlid();
-        var perguntaId4 = Ulid.NewUlid();
+        var g = BuildQuestion.Create();
+        var questionId1 = "1";
+        var questionId2 = "2";
+        var questionId3 = "3";
+        var questionId4 = "4";
 
-        g.AddPergunta(perguntaId1, Pergunta.Create(
-                "Qual país deseja fazer intercambio ?",
+        g.AddQuestion(questionId1, Question.Create(
+                TextQuestion.Create("Qual país deseja fazer intercambio ?"),
                 new string[] { "Brasil", "Canada", "USA" }
             )
         );
 
-        g.AddPergunta(perguntaId2, Pergunta.Create(
-                "Qual Cidade ou Provincia",
+        g.AddQuestion(questionId2, Question.Create(
+                TextQuestion.Create("Qual Cidade ou Provincia"),
                 new string[] { "Sao Paulo", "Rio de Janeiro" }
             )
         );
 
-        g.AddPergunta(perguntaId3, Pergunta.Create(
-                "Qual Cidade ou Provincia",
+        g.AddQuestion(questionId3, Question.Create(
+                TextQuestion.Create("Qual Cidade ou Provincia"),
                 new string[] { "Toronto", "Vancouver" }
             )
         );
 
-        g.AddPergunta(perguntaId4, Pergunta.Create(
-                "Voce vai a trabalho ou estudo ?",
+        g.AddQuestion(questionId4, Question.Create(
+                TextQuestion.Create("Voce vai a trabalho ou estudo ?"),
                 new string[] { "Trabalho", "Estudo" }
             )
         );
 
-        g.DefinirFluxo(perguntaId1, "Brasil", perguntaId2);
-        g.DefinirFluxo(perguntaId1, "Canada", perguntaId3);
-        g.DefinirFluxo(perguntaId2, "Sao Paulo", perguntaId4);
+        g.DefinirFluxo(questionId1, "Brasil", questionId2);
+        g.DefinirFluxo(questionId1, "Canada", questionId3);
+        g.DefinirFluxo(questionId2, "Sao Paulo", questionId4);
 
-        g.IniciarPergunta(perguntaId1);
+        g.IniciarQuestion(questionId1);
 
-        var perguntaAtual = g.ExibirPerguntaAtual();
+        var questionAtual = g.ExibirQuestionAtual();
 
-        Assert.That(perguntaAtual!.Texto, Is.EqualTo("Qual país deseja fazer intercambio ?"));
+        Assert.That(questionAtual!.Text.Value, Is.EqualTo("qual país deseja fazer intercambio ?"));
 
-        g.IniciarPergunta(perguntaId4);
-        var perguntaSaoPaulo = g.ExibirPerguntaAtual();
+        g.IniciarQuestion(questionId4);
+        var questionSaoPaulo = g.ExibirQuestionAtual();
 
-        Assert.That(perguntaSaoPaulo!.Texto, Is.EqualTo("Voce vai a trabalho ou estudo ?"));
+        Assert.That(questionSaoPaulo!.Text.Value, Is.EqualTo("voce vai a trabalho ou estudo ?"));
 
     }
 }

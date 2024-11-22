@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScrenningExchange")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fcaa57ff33965642253de303029b15c964126020")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbd798936099233ddef1084ecaa38f8a86b0a36f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScrenningExchange")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScrenningExchange")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

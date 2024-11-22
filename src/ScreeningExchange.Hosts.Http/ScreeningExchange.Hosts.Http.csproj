@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FastEndpoints" Version="5.28.0" />
+    <PackageReference Include="FastEndpoints.Security" Version="5.28.0" />
+    <PackageReference Include="NSwag.AspNetCore" Version="14.0.7" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="3.0.0-preview1" />
+
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScreeningExchange.App.Api\ScreeningExchange.App.Api.csproj" />
+    <ProjectReference Include="..\ScreeningExchange.Infrastructure\ScreeningExchange.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
