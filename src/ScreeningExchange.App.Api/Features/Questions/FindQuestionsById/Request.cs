@@ -1,10 +1,11 @@
 ﻿
+using Microsoft.AspNetCore.Mvc;
 using ScreeningExchange.App.Api.Features.Shared.Auth;
 
-namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionsById;
+namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionById;
 
 public record FindQuestionByIdRequest(
-    string Id,
-    string QuestionId
+    [FromRoute] string BuildQuestionId,
+    [FromRoute] string QuestionId
 ) : AuthRequest;
 

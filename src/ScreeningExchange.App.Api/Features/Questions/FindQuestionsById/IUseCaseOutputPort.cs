@@ -1,7 +1,7 @@
 
 using ScreeningExchange.Infrastructure.Core;
 
-namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionsById;
+namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionById;
 
 public interface IUseCaseOutputPort<TResult> : IOutputPort<TResult>
 {

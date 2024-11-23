@@ -3,7 +3,7 @@ using ScreeningExchange.Domain.Aggregates.QuestionsAggregate;
 using ScreeningExchange.Infrastructure.Core;
 using ScreeningExchange.Infrastructure.DataAccess;
 
-namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionsById;
+namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionById;
 
 public class UseCase
 (
@@ -22,7 +22,11 @@ public class UseCase
         CancellationToken ct = default
     )
     {
-        var b = await buildQuestionRepository.FindAsync(Ulid.Parse(input.Id));
+        var b = await buildQuestionRepository.FindAsync(Ulid.Parse(input.BuildQuestionId));
+
+        if (b is null)
+            return OutputPort.BadRequest("QuestionId not found.");
+
         b.IniciarQuestion(input.QuestionId);
         var q = b.ExibirQuestionAtual();
 

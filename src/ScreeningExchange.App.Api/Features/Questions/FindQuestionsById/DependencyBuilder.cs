@@ -1,7 +1,7 @@
 ﻿using ScreeningExchange.Infrastructure.Core;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionsById;
+namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionById;
 
 public static class DependencyBuilder
 {

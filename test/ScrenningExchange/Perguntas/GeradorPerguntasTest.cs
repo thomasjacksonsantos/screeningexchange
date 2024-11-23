@@ -62,4 +62,52 @@ public class GeradorQuestionsTest
         Assert.That(questionSaoPaulo!.Text.Value, Is.EqualTo("voce vai a trabalho ou estudo ?"));
 
     }
+
+    [Test]
+    public void Test_Awnser()
+    {
+        // Arrange
+        var g = BuildQuestion.Create();
+        var questionId1 = "1";
+        var questionId2 = "2";
+        var questionId3 = "3";
+        var questionId4 = "4";
+
+        g.AddQuestion(questionId1, Question.Create(
+                TextQuestion.Create("Qual país deseja fazer intercambio ?"),
+                new string[] { "Brasil", "Canada", "USA" }
+            )
+        );
+
+        g.AddQuestion(questionId2, Question.Create(
+                TextQuestion.Create("Qual Cidade ou Provincia"),
+                new string[] { "Sao Paulo", "Rio de Janeiro" }
+            )
+        );
+
+        g.AddQuestion(questionId3, Question.Create(
+                TextQuestion.Create("Qual Cidade ou Provincia"),
+                new string[] { "Toronto", "Vancouver" }
+            )
+        );
+
+        g.AddQuestion(questionId4, Question.Create(
+                TextQuestion.Create("Voce vai a trabalho ou estudo ?"),
+                new string[] { "Trabalho", "Estudo" }
+            )
+        );
+
+        g.DefinirFluxo(questionId1, "Brasil", questionId2);
+        g.DefinirFluxo(questionId1, "Canada", questionId3);
+        g.DefinirFluxo(questionId2, "Sao Paulo", questionId4);
+
+        g.IniciarQuestion(questionId1);
+        var q = g.Awnser("Brasil");
+
+        var questionAtual = g.ExibirQuestionAtual();
+
+        Assert.That(q!.Text.Value, Is.EqualTo("qual cidade ou provincia"));
+        Assert.That(g.QuestionIdActual, Is.EqualTo(questionId2));
+        Assert.That(q.Awnsers.Count, Is.EqualTo(2));
+    }
 }

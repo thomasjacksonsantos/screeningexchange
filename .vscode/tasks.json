@@ -36,6 +36,42 @@
                 "${workspaceFolder}/src/ScreeningExchange.Hosts.Http/ScreeningExchange.Hosts.Http.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "dotnet ef migrations",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "ef",
+                "migrations",
+                "add",
+                "${input:componentName}",
+                "--verbose",
+                "--project",
+                "src/ScreeningExchange.Infrastructure/ScreeningExchange.Infrastructure.csproj",
+                "--context",
+                "ApplicationDbContext",
+                "--startup-project",
+                "src/ScreeningExchange.Hosts.Http/ScreeningExchange.Hosts.Http.csproj"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "dotnet ef update",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "ef",
+                "database",
+                "update",
+                "--project",
+                "src/ScreeningExchange.Infrastructure/ScreeningExchange.Infrastructure.csproj",
+                "--context",
+                "ApplicationDbContext",
+                "--startup-project",
+                "src/ScreeningExchange.Hosts.Http/ScreeningExchange.Hosts.Http.csproj"
+            ],
+            "group": "build"
         }
     ],
     "inputs": [

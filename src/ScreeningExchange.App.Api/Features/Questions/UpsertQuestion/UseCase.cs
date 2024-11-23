@@ -55,6 +55,8 @@ public class UseCase
             );
         }
 
+        await buildQuestionRepository.AddAsync(buildQuestion);
+
         await unitOfWork.SaveChangesAsync(ct);
 
         return OutputPort.Ok(new UpsertQuestionResponse(

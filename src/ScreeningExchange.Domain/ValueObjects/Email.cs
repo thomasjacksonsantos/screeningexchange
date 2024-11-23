@@ -19,7 +19,7 @@ public sealed class Email
         if (!mail.IsValid(value))
             throw new ArgumentException("Email invalid", value);
 
-        Value = value;
+        Value = value.ToLower();
     }
 
     public static Email Create(string value)

@@ -1,4 +1,4 @@
-﻿namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionsById;
+﻿namespace ScreeningExchange.App.Api.Features.Questions.FindQuestionById;
 
 public record class FindQuestionByIdResponse
 (

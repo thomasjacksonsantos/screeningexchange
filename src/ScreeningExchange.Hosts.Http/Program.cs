@@ -14,7 +14,7 @@ services
 
 services
     // .AddAuthenticationJwtBearer(s => s.SigningKey = "supersecret")
-    .AddAuthorization()
+    // .AddAuthorization()
     .AddFastEndpoints(o =>
     {
         o.DisableAutoDiscovery = true;
@@ -58,17 +58,17 @@ services.AddEndpointsApiExplorer();
 
 WebApplication app = builder.Build();
 app
-    .UseAuthentication()
-    .UseAuthorization()
+    // .UseAuthentication()
+    // .UseAuthorization()
     .UseFastEndpoints()
     .UseOpenApi()
     .UseSwaggerUi(settings =>
     {
-        settings.OAuth2Client = new OAuth2ClientSettings
-        {
-            ClientId = builder.Configuration.GetSection("Swagger:AzureB2CClientId").Value,
-            AppName = "swagger-ui-client"
-        };
+        // settings.OAuth2Client = new OAuth2ClientSettings
+        // {
+        //     ClientId = builder.Configuration.GetSection("Swagger:AzureB2CClientId").Value,
+        //     AppName = "swagger-ui-client"
+        // };
         settings.SwaggerRoutes.Add(new SwaggerUiRoute("Doss Api V1", "/swagger/v1/swagger.json"));
         settings.OperationsSorter = "method";
         settings.TagsSorter = "alpha";
