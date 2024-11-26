@@ -56,12 +56,23 @@ services.AddOpenApiDocument(configure =>
 
 services.AddEndpointsApiExplorer();
 
+services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader();
+    });
+});
+
 WebApplication app = builder.Build();
 app
     // .UseAuthentication()
     // .UseAuthorization()
     .UseFastEndpoints()
     .UseOpenApi()
+    .UseCors("AllowAll")
     .UseSwaggerUi(settings =>
     {
         // settings.OAuth2Client = new OAuth2ClientSettings
