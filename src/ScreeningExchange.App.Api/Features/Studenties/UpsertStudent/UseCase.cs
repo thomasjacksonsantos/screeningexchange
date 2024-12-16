@@ -1,11 +1,10 @@
 ﻿
-using ScreeningExchange.Domain.Aggregates.QuestionsAggregate;
 using ScreeningExchange.Domain.Aggregates.StudentiesAggregate;
 using ScreeningExchange.Domain.Aggregates.ValueObjects;
 using ScreeningExchange.Infrastructure.Core;
 using ScreeningExchange.Infrastructure.DataAccess;
 
-namespace ScreeningExchange.App.Api.Features.Questions.UpsertStudent;
+namespace ScreeningExchange.App.Api.Features.Studenties.UpsertStudent;
 
 public class UseCase
 (

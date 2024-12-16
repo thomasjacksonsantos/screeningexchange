@@ -12,7 +12,7 @@ public class Endpoint(IInputOutputPortUseCase<FindDestinationByStudentIddRequest
 
     public override void Configure()
     {
-        Get("api/v1/student/{id}/destination");
+        Get("api/v1/destination/find/{id}");
         // PreProcessor<AuthInterceptor<FindDestinationByStudentIddRequest>>();
         AllowAnonymous();
         Description(c => c.Accepts<FindDestinationByStudentIdResponse>()

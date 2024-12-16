@@ -1,6 +1,6 @@
 ﻿using ScreeningExchange.Infrastructure.Core;
 
-namespace ScreeningExchange.App.Api.Features.Questions.UpsertStudent;
+namespace ScreeningExchange.App.Api.Features.Studenties.UpsertStudent;
 
 public class JsonPresenter : IUseCaseOutputPort<Result<UpsertStudentResponse>>
 {

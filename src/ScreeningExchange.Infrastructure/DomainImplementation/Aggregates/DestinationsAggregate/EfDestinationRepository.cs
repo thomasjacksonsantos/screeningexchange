@@ -20,9 +20,21 @@ public sealed class EfDestinationRepository(EfUnitOfWork<ApplicationDbContext> u
             .FindAsync(id) ?? null!;
     }
 
-    public async ValueTask<IEnumerable<Destination>> FindAllAsync()
+    public async ValueTask<IEnumerable<Destination>> FindAllAsync(
+        int page, 
+        int total
+    )
     {
-        return await Queryable().ToListAsync();
+        if (total <= 0 || total > 20)
+            total = 20;
+
+        if (page > 0)
+            page = (page - 1) * total;
+
+        return await Queryable()
+            .OrderByDescending(c => c.DateTimeFinished)
+            .Skip(page)
+            .Take(total).ToListAsync();
     }
 
     public async ValueTask<Destination> FindByStudentIdAsnyc(Ulid studentId)

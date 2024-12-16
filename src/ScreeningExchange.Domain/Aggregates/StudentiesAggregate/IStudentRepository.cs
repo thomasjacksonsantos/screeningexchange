@@ -7,5 +7,8 @@ public interface IStudentRepository
     ValueTask AddAsync(Student student);
     ValueTask<Student> FindAsync(Ulid id);
     ValueTask<Student> FindByEmailAsnyc(string email);
-    ValueTask<IEnumerable<Student>> FindAllAsync();
+    ValueTask<IEnumerable<Student>> FindAllAsync(
+        int page,
+        int total
+    );
 }

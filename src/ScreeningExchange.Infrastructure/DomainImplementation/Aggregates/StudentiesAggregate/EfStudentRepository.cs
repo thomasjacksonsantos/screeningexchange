@@ -26,8 +26,20 @@ public sealed class EfStudentRepository(EfUnitOfWork<ApplicationDbContext> unitO
             .FirstAsync(c => c.Email.Value == email.ToLower());
     }
 
-    public async ValueTask<IEnumerable<Student>> FindAllAsync()
+    public async ValueTask<IEnumerable<Student>> FindAllAsync(
+        int page,
+        int total
+    )
     {
-        return await Queryable().ToListAsync();
+        if (total <= 0 || total > 20)
+            total = 20;
+
+        if (page > 0)
+            page = (page - 1) * total;
+
+        return await Queryable()
+            .OrderBy(c => c.Name)
+            .Skip(page)
+            .Take(total).ToListAsync();
     }
 }

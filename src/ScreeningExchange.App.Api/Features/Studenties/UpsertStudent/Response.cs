@@ -1,4 +1,4 @@
-﻿namespace ScreeningExchange.App.Api.Features.Questions.UpsertStudent;
+﻿namespace ScreeningExchange.App.Api.Features.Studenties.UpsertStudent;
 
 public record class UpsertStudentResponse
 (

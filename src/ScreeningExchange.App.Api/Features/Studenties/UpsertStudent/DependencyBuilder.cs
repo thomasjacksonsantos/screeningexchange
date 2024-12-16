@@ -1,7 +1,7 @@
 ﻿using ScreeningExchange.Infrastructure.Core;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ScreeningExchange.App.Api.Features.Questions.UpsertStudent;
+namespace ScreeningExchange.App.Api.Features.Studenties.UpsertStudent;
 
 public static class DependencyBuilder
 {

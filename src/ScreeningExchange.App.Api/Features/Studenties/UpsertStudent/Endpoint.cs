@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using ScreeningExchange.App.Api.Features.Shared.Auth;
 using ScreeningExchange.Infrastructure.Core;
 
-namespace ScreeningExchange.App.Api.Features.Questions.UpsertStudent;
+namespace ScreeningExchange.App.Api.Features.Studenties.UpsertStudent;
 
 public class Endpoint(IInputOutputPortUseCase<UpsertStudentdRequest, IUseCaseOutputPort<Result<UpsertStudentResponse>>, Result<UpsertStudentResponse>> useCase)
     : Endpoint<UpsertStudentdRequest, Result<UpsertStudentResponse>>
