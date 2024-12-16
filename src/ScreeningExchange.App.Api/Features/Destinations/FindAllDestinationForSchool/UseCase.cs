@@ -29,17 +29,22 @@ public class UseCase
 
 
         return OutputPort.Ok(new FindAllDestinationForSchoolResponse(
-                destinations.Select(c => new DestinationResponse(
-                    new StudentResponse(
-                        c.Student.Id.ToString(),
-                        c.Student.Name.Value,
-                        c.Student.Email.Value,
-                        c.Student.Phone.Value
-                    ),
-                    new QuestionResponse(
-                        c.Question.Text.Value
-                    )
-                )
+                destinations.Select(c => 
+                {
+                    c.BuildQuestion.IniciarQuestion(c.QuestionId);
+                    var question = c.BuildQuestion.ExibirQuestionAtual();
+                    return new DestinationResponse(
+                        new StudentResponse(
+                            c.Student.Id.ToString(),
+                            c.Student.Name.Value,
+                            c.Student.Email.Value,
+                            c.Student.Phone.Value
+                        ),
+                        new QuestionResponse(
+                            question!.Text.Value
+                        )
+                    );
+                }
             )
         ));
     }

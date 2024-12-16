@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScreeningExchange.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91a4de9df25549436795cacba80abc6a314821cb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b458c6f7338847b021c492859e92b8f015eb59f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScreeningExchange.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScreeningExchange.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

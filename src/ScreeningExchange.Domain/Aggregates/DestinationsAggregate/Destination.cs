@@ -12,7 +12,6 @@ public class Destination
     public Ulid BuildQuestionId { get; private set; }
     public BuildQuestion BuildQuestion { get; private set; }
     public string QuestionId { get; private set; }
-    public Question Question { get; private set; }
     public string Awnser { get; private set; }
     public DateTime DateTimeFinished { get; private set; }
     public DateTime CreatedOn { get; private set; }
