@@ -1,0 +1,15 @@
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\bin\Debug\net8.0\ScreeningExchange.Infrastructure.deps.json
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\bin\Debug\net8.0\ScreeningExchange.Infrastructure.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\bin\Debug\net8.0\ScreeningExchange.Infrastructure.pdb
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\bin\Debug\net8.0\ScreeningExchange.Domain.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\bin\Debug\net8.0\ScreeningExchange.Domain.pdb
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\ScreeningExchange.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\ScreeningExchange.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\ScreeningExchange.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\ScreeningExchange.Infrastructure.AssemblyInfo.cs
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\ScreeningExchange.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\Screenin.A91D3882.Up2Date
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\ScreeningExchange.Infrastructure.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\refint\ScreeningExchange.Infrastructure.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\ScreeningExchange.Infrastructure.pdb
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.Infrastructure\obj\Debug\net8.0\ref\ScreeningExchange.Infrastructure.dll

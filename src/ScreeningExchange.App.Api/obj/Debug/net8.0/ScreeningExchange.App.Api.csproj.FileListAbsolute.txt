@@ -1,0 +1,17 @@
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\bin\Debug\net8.0\ScreeningExchange.App.Api.deps.json
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\bin\Debug\net8.0\ScreeningExchange.App.Api.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\bin\Debug\net8.0\ScreeningExchange.App.Api.pdb
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\bin\Debug\net8.0\ScreeningExchange.Domain.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\bin\Debug\net8.0\ScreeningExchange.Infrastructure.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\bin\Debug\net8.0\ScreeningExchange.Infrastructure.pdb
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\bin\Debug\net8.0\ScreeningExchange.Domain.pdb
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\ScreeningExchange.App.Api.csproj.AssemblyReference.cache
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\ScreeningExchange.App.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\ScreeningExchange.App.Api.AssemblyInfoInputs.cache
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\ScreeningExchange.App.Api.AssemblyInfo.cs
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\ScreeningExchange.App.Api.csproj.CoreCompileInputs.cache
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\Screenin.E2FDAD89.Up2Date
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\ScreeningExchange.App.Api.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\refint\ScreeningExchange.App.Api.dll
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\ScreeningExchange.App.Api.pdb
+C:\Users\thoma\projetos\estudos\screeningexchange\src\ScreeningExchange.App.Api\obj\Debug\net8.0\ref\ScreeningExchange.App.Api.dll
