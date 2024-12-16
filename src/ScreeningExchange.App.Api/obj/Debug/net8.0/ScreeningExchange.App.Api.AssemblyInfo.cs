@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScreeningExchange.App.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b458c6f7338847b021c492859e92b8f015eb59f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5caf2e3d5604aa95c87d0cca839aa3b3ee061c63")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScreeningExchange.App.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScreeningExchange.App.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

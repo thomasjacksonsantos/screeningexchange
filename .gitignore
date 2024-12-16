@@ -18,7 +18,8 @@ local.settings.json
 
 # Mono auto generated files
 mono_crash.*
-
+debug
+debug/*
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -30,6 +31,7 @@ x86/
 [Aa][Rr][Mm]64/
 bld/
 [Bb]in/
+[Bb]in/*
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
