@@ -1,4 +1,0 @@
-C:\Users\thoma\projetos\ScreeningExchange\src\ScreeningExchange.Domain\obj\Debug\net8.0\ScreeningExchange.Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\thoma\projetos\ScreeningExchange\src\ScreeningExchange.Domain\obj\Debug\net8.0\ScreeningExchange.Domain.AssemblyInfoInputs.cache
-C:\Users\thoma\projetos\ScreeningExchange\src\ScreeningExchange.Domain\obj\Debug\net8.0\ScreeningExchange.Domain.AssemblyInfo.cs
-C:\Users\thoma\projetos\ScreeningExchange\src\ScreeningExchange.Domain\obj\Debug\net8.0\ScreeningExchange.Domain.csproj.CoreCompileInputs.cache

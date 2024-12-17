@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\ScreeningExchange.Hosts.Http.props" />
-</Project>
