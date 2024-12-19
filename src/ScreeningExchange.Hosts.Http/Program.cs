@@ -91,9 +91,10 @@ services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("http://localhost:5174", "https://screening-exchange-bsd3bzg9fkabg6eq.canadacentral-01.azurewebsites.net/")
              .AllowAnyMethod()
-             .AllowAnyHeader();
+             .AllowAnyHeader()
+             .AllowCredentials();
     });
 });
 
