@@ -8,7 +8,7 @@ public static class DependencyBuilder
     public static IServiceCollection AddFindDestinationByStudentIdFeature(this IServiceCollection services)
     {
         services.AddTransient<IUseCaseOutputPort<Result<FindDestinationByStudentIdResponse>>, JsonPresenter>();
-        services.AddTransient<IInputOutputPortUseCase<FindDestinationByStudentIddRequest, IUseCaseOutputPort<Result<FindDestinationByStudentIdResponse>>, Result<FindDestinationByStudentIdResponse>>, UseCase>();
+        services.AddTransient<IInputOutputPortUseCase<FindDestinationByStudentIdRequest, IUseCaseOutputPort<Result<FindDestinationByStudentIdResponse>>, Result<FindDestinationByStudentIdResponse>>, UseCase>();
         return services;
     }
 }

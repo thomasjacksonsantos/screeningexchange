@@ -12,14 +12,14 @@ public class UseCase
     IUnitOfWork unitOfWork,
     IUseCaseOutputPort<Result<UpsertStudentResponse>> outputPort
 )
-    : IInputOutputPortUseCase<UpsertStudentdRequest, IUseCaseOutputPort<Result<UpsertStudentResponse>>, Result<UpsertStudentResponse>>
+    : IInputOutputPortUseCase<UpsertStudentRequest, IUseCaseOutputPort<Result<UpsertStudentResponse>>, Result<UpsertStudentResponse>>
 {
     private readonly IStudentRepository studentRepository = studentRepository;
     private readonly IUnitOfWork unitOfWork = unitOfWork;
     private readonly IUseCaseOutputPort<Result<UpsertStudentResponse>> OutputPort = outputPort;
 
     public async ValueTask<Result<UpsertStudentResponse>> Execute(
-        UpsertStudentdRequest input,
+        UpsertStudentRequest input,
         CancellationToken ct = default
     )
     {
@@ -32,26 +32,35 @@ public class UseCase
 
             student.Update(
                 Name.Create(input.Name),
-                Email.Create(input.EmailStudent),
+                Email.Create(input.StudentEmail),
                 Phone.Create(input.Phone)
+            );
+
+            await unitOfWork.SaveChangesAsync(ct);
+
+            return OutputPort.Ok(new UpsertStudentResponse(
+                    input.Id,
+                    "Student updated with success."
+                )
             );
         }
         else
         {
             var create = Student.Create(
                  Name.Create(input.Name),
-                 Email.Create(input.EmailStudent),
+                 Email.Create(input.StudentEmail),
                  Phone.Create(input.Phone)
              );
 
             await studentRepository.AddAsync(create);
+
+            await unitOfWork.SaveChangesAsync(ct);
+
+            return OutputPort.Ok(new UpsertStudentResponse(
+                    create.Id.ToString(),
+                    "Student created with success."
+                )
+            );
         }
-
-        await unitOfWork.SaveChangesAsync(ct);
-
-        return OutputPort.Ok(new UpsertStudentResponse(
-                "Student create with success."
-            )
-        );
     }
 }

@@ -15,7 +15,7 @@ public class Endpoint(IInputOutputPortUseCase<FindNextQuestionByAwnserRequest, I
         Get("api/v1/build-question/{buildquestionid}/question/{questionid}/awnser/{awnser}");
         // PreProcessor<AuthInterceptor<FindNextQuestionByAwnserRequest>>();
         AllowAnonymous();
-        Description(c => c.Accepts<FindNextQuestionByAwnserResponse>()
+        Description(c => c.Accepts<FindNextQuestionByAwnserRequest>()
             .Produces<FindNextQuestionByAwnserResponse>()
             .ProducesProblem(400)
             .WithTags("Questions")

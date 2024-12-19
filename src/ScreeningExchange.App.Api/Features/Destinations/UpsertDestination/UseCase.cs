@@ -39,6 +39,13 @@ public class UseCase
                 input.QuestionId,
                 input.Awnser
             );
+            await unitOfWork.SaveChangesAsync(ct);
+
+            return OutputPort.Ok(new UpsertDestinationResponse(
+                    input.Id,
+                    "Destination created with success."
+                )
+            );
         }
         else
         {
@@ -48,20 +55,24 @@ public class UseCase
             if (buildQuestion is null)
                 return OutputPort.BadRequest("BuildQuestionId not found.");
 
-            await destinationRepository.AddAsync(Destination.Create(
-                    student,
-                    buildQuestion,
-                    input.QuestionId,
-                    input.Awnser
+            var destination = Destination.Create(
+                student,
+                buildQuestion,
+                input.QuestionId,
+                input.Awnser
+            );
+
+            await destinationRepository.AddAsync(
+                destination
+            );
+            await unitOfWork.SaveChangesAsync(ct);
+
+            return OutputPort.Ok(new UpsertDestinationResponse(
+                    destination.Id.ToString(),
+                    "Destination created with success."
                 )
             );
         }
 
-        await unitOfWork.SaveChangesAsync(ct);
-
-        return OutputPort.Ok(new UpsertDestinationResponse(
-                "Destination created with success."
-            )
-        );
     }
 }

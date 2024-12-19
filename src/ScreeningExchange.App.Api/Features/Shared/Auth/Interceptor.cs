@@ -16,7 +16,7 @@ public class AuthInterceptor<TRequest>
             throw new ArgumentException("user_id nao foi encontrado.");
             
         ctx.Request.Uid = uid;
-        ctx.Request.UserId = uid.ConvertUidToUlid();
+        // ctx.Request.UserId = uid.ConvertUidToUlid();
         ctx.Request.UserName = name;
         ctx.Request.Email = email;
 

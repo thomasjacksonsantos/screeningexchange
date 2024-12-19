@@ -5,8 +5,7 @@ namespace ScreeningExchange.App.Api.Features.Schools.UpsertSchool;
 
 public record UpsertSchoolRequest(
     string? Id,
-    string Name,
-    string EmailStudent,
+    string SchoolName,
+    string SchoolEmail,
     string Phone
-
 ) : AuthRequest;

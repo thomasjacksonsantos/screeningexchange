@@ -1,6 +1,5 @@
 ﻿using FastEndpoints;
 using Microsoft.AspNetCore.Http;
-using ScreeningExchange.App.Api.Features.Shared.Auth;
 using ScreeningExchange.Infrastructure.Core;
 
 namespace ScreeningExchange.App.Api.Features.Schools.FindSchoolById;
@@ -12,13 +11,12 @@ public class Endpoint(IInputOutputPortUseCase<FindSchoolByIdRequest, IUseCaseOut
 
     public override void Configure()
     {
-        Put("api/v1/school/find/{id}");
-        // PreProcessor<AuthInterceptor<FindSchoolByIddRequest>>();
+        Get("api/v1/school/find/{id}");
         AllowAnonymous();
-        Description(c => c.Accepts<FindSchoolByIdResponse>()
+        Description(c => c.Accepts<FindSchoolByIdRequest>()
             .Produces<FindSchoolByIdResponse>()
             .ProducesProblem(400)
-            .WithTags("School")
+            .WithTags("Schools")
             , clearDefaults: false);
     }
 

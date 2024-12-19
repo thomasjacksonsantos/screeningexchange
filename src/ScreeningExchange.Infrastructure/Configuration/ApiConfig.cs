@@ -4,6 +4,7 @@ public class ApiConfig
 {
     public Email Email { get; set; } = new();
     public BlobStorageConfig BlobStorage { get; set; } = new();
+    public FirebaseAuthentication FirebaseAuthentication { get; set; } = new();
 }
 
 public class Email
@@ -20,4 +21,10 @@ public class BlobStorageConfig
 {
     public string BlobStorageConnectionString { get; set; } = string.Empty;
     public string ContainerName { get; set; } = string.Empty;
+}
+
+public class FirebaseAuthentication
+{
+    public string TokenUri { get; set; } = string.Empty;
+    public string ServiceName { get; set; } = string.Empty;
 }

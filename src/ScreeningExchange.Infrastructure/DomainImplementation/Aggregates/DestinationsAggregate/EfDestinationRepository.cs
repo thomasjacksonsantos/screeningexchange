@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ScreeningExchange.Domain.Aggregates.DestinationsAggregate;
 using ScreeningExchange.Infrastructure.DataAccess;
 
-namespace ScreeningExchange.Infrastructure.DomainImplementation.Aggregates.DestinationAggretation;
+namespace ScreeningExchange.Infrastructure.DomainImplementation.Aggregates.DestinationsAggretation;
 
 public sealed class EfDestinationRepository(EfUnitOfWork<ApplicationDbContext> unitOfWork)
     : EfUnitOfWorkAttachedRepository<ApplicationDbContext, Destination>(unitOfWork), IDestinationRepository

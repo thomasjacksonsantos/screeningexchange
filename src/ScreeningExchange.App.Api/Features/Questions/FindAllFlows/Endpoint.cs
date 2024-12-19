@@ -14,7 +14,7 @@ public class Endpoint(IInputOutputPortUseCase<FindAllFlowsRequest, IUseCaseOutpu
         Get("api/v1/build-question/{buildquestionid}/flow/all");
         // PreProcessor<AuthInterceptor<FindAllFlowsRequest>>();
         AllowAnonymous();
-        Description(c => c.Accepts<FindAllFlowsResponse>()
+        Description(c => c.Accepts<FindAllFlowsRequest>()
             .Produces<FindAllFlowsResponse>()
             .ProducesProblem(400)
             .WithTags("Questions")

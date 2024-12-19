@@ -6,6 +6,7 @@ namespace ScreeningExchange.Domain.Aggregates.SchoolsAggregate;
 public class School
 {
     public Ulid Id { get; private set; }
+    public string UserId { get; set; }
     public Name Name { get; private set; }
     public Email Email { get; private set; }
     public Phone Phone { get; private set; }
@@ -17,11 +18,17 @@ public class School
 #pragma warning restore CS8618
 
     private School(
+        string userId,
         Name name,
         Email email,
         Phone phone
     )
     {
+        if (string.IsNullOrWhiteSpace(userId))
+            throw new ArgumentNullException(nameof(userId));
+
+        UserId = userId;
+
         Id = Ulid.NewUlid();
         Name = name;
         Email = email;
@@ -44,9 +51,11 @@ public class School
     public static School Create(
         Name name,
         Email email,
-        Phone phone
+        Phone phone,
+        string userId
     )
         => new(
+            userId,
             name,
             email,
             phone

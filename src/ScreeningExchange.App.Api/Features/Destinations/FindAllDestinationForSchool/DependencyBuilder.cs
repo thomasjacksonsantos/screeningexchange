@@ -8,7 +8,7 @@ public static class DependencyBuilder
     public static IServiceCollection AddFindAllDestinationForSchoolFeature(this IServiceCollection services)
     {
         services.AddTransient<IUseCaseOutputPort<Result<FindAllDestinationForSchoolResponse>>, JsonPresenter>();
-        services.AddTransient<IInputOutputPortUseCase<FindAllDestinationForSchooldRequest, IUseCaseOutputPort<Result<FindAllDestinationForSchoolResponse>>, Result<FindAllDestinationForSchoolResponse>>, UseCase>();
+        services.AddTransient<IInputOutputPortUseCase<FindAllDestinationForSchoolIdRequest, IUseCaseOutputPort<Result<FindAllDestinationForSchoolResponse>>, Result<FindAllDestinationForSchoolResponse>>, UseCase>();
         return services;
     }
 }

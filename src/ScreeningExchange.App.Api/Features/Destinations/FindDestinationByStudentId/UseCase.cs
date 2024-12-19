@@ -11,14 +11,14 @@ public class UseCase
     IUnitOfWork unitOfWork,
     IUseCaseOutputPort<Result<FindDestinationByStudentIdResponse>> outputPort
 )
-    : IInputOutputPortUseCase<FindDestinationByStudentIddRequest, IUseCaseOutputPort<Result<FindDestinationByStudentIdResponse>>, Result<FindDestinationByStudentIdResponse>>
+    : IInputOutputPortUseCase<FindDestinationByStudentIdRequest, IUseCaseOutputPort<Result<FindDestinationByStudentIdResponse>>, Result<FindDestinationByStudentIdResponse>>
 {
     private readonly IDestinationRepository destinationRepository = destinationRepository;
     private readonly IUnitOfWork unitOfWork = unitOfWork;
     private readonly IUseCaseOutputPort<Result<FindDestinationByStudentIdResponse>> OutputPort = outputPort;
 
     public async ValueTask<Result<FindDestinationByStudentIdResponse>> Execute(
-        FindDestinationByStudentIddRequest input,
+        FindDestinationByStudentIdRequest input,
         CancellationToken ct = default
     )
     {

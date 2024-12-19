@@ -21,10 +21,9 @@ public static class DependencyBuilderModule
         services.AddRepositories();
         services.AddConfigurations(configuration);
         services.AddIO();
-
+        services.AddHttpClients(configuration);
         return services;
     }
-
 
     private static IServiceCollection AddConfigurations(this IServiceCollection services, IConfiguration configuration)
     {
@@ -40,6 +39,15 @@ public static class DependencyBuilderModule
         {
             options.UseSqlServer(connectionString);
         });
+
+        return services;
+    }
+
+    private static IServiceCollection AddHttpClients(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddHttpClient(configuration.GetSection("AppSettings:FirebaseAuthentication:ServiceName").Value!, c => c.BaseAddress = new Uri(
+            configuration.GetSection("AppSettings:FirebaseAuthentication:TokenUri").Value!
+        ));
 
         return services;
     }

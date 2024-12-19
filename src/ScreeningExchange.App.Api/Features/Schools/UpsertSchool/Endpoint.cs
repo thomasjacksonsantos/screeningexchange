@@ -13,12 +13,11 @@ public class Endpoint(IInputOutputPortUseCase<UpsertSchoolRequest, IUseCaseOutpu
     public override void Configure()
     {
         Put("api/v1/school");
-        // PreProcessor<AuthInterceptor<UpsertSchooldRequest>>();
-        AllowAnonymous();
-        Description(c => c.Accepts<UpsertSchoolResponse>()
+        PreProcessor<AuthInterceptor<UpsertSchoolRequest>>();
+        Description(c => c.Accepts<UpsertSchoolRequest>()
             .Produces<UpsertSchoolResponse>()
             .ProducesProblem(400)
-            .WithTags("School")
+            .WithTags("Schools")
             , clearDefaults: false);
     }
 

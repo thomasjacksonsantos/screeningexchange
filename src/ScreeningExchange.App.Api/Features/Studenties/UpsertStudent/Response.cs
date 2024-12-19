@@ -2,5 +2,6 @@
 
 public record class UpsertStudentResponse
 (
+    string Id,
     string Message
 );

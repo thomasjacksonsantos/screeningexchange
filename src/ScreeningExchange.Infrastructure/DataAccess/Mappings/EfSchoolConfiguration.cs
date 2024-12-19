@@ -16,10 +16,12 @@ public class EfSchoolConfiguration : IEntityTypeConfiguration<School>
             .HasConversion<UlidToStringConverter>()
             .HasConversion<UlidToBytesConverter>();
 
+        builder.Property(c => c.UserId).HasMaxLength(200);
+
         builder.ComplexProperty(c => c.Name);
 
         builder.ComplexProperty(c => c.Email);
-        
+
         builder.ComplexProperty(c => c.Phone);
     }
 }

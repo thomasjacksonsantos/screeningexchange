@@ -14,7 +14,7 @@ public class Endpoint(IInputOutputPortUseCase<FindAllQuestionRequest, IUseCaseOu
         Get("api/v1/question/all");
         // PreProcessor<AuthInterceptor<FindAllQuestionRequest>>();
         AllowAnonymous();
-        Description(c => c.Accepts<FindAllQuestionResponse>()
+        Description(c => c.Accepts<FindAllQuestionRequest>()
             .Produces<FindAllQuestionResponse>()
             .ProducesProblem(400)
             .WithTags("Questions")

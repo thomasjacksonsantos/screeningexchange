@@ -24,6 +24,54 @@ namespace ScreeningExchange.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ScreeningExchange.Domain.Aggregates.AgentsAggregate.Agent", b =>
+                {
+                    b.Property<byte[]>("Id")
+                        .HasColumnType("varbinary(16)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.ComplexProperty<Dictionary<string, object>>("Email", "ScreeningExchange.Domain.Aggregates.AgentsAggregate.Agent.Email#Email", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+                        });
+
+                    b.ComplexProperty<Dictionary<string, object>>("Name", "ScreeningExchange.Domain.Aggregates.AgentsAggregate.Agent.Name#Name", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+                        });
+
+                    b.ComplexProperty<Dictionary<string, object>>("Phone", "ScreeningExchange.Domain.Aggregates.AgentsAggregate.Agent.Phone#Phone", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+                        });
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Agent", "screeningexchange");
+                });
+
             modelBuilder.Entity("ScreeningExchange.Domain.Aggregates.DestinationsAggregate.Destination", b =>
                 {
                     b.Property<byte[]>("Id")
@@ -91,6 +139,11 @@ namespace ScreeningExchange.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.ComplexProperty<Dictionary<string, object>>("Email", "ScreeningExchange.Domain.Aggregates.SchoolsAggregate.School.Email#Email", b1 =>
                         {

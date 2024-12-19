@@ -15,7 +15,7 @@ public class Endpoint(IInputOutputPortUseCase<UpsertDestinationdRequest, IUseCas
         Put("api/v1/destination");
         // PreProcessor<AuthInterceptor<UpsertDestinationdRequest>>();
         AllowAnonymous();
-        Description(c => c.Accepts<UpsertDestinationResponse>()
+        Description(c => c.Accepts<UpsertDestinationdRequest>()
             .Produces<UpsertDestinationResponse>()
             .ProducesProblem(400)
             .WithTags("Destinations")

@@ -15,7 +15,7 @@ public class Endpoint(IInputOutputPortUseCase<FindQuestionByIdRequest, IUseCaseO
         Get("api/v1/build-question/{buildquestionid}/question/{questionid}");
         // PreProcessor<AuthInterceptor<FindQuestionByIdRequest>>();
         AllowAnonymous();
-        Description(c => c.Accepts<FindQuestionByIdResponse>()
+        Description(c => c.Accepts<FindQuestionByIdRequest>()
             .Produces<FindQuestionByIdResponse>()
             .ProducesProblem(400)
             .WithTags("Questions")

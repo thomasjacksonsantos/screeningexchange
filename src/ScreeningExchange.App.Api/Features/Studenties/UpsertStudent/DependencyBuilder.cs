@@ -8,7 +8,7 @@ public static class DependencyBuilder
     public static IServiceCollection AddStudentUpsertStudentFeature(this IServiceCollection services)
     {
         services.AddTransient<IUseCaseOutputPort<Result<UpsertStudentResponse>>, JsonPresenter>();
-        services.AddTransient<IInputOutputPortUseCase<UpsertStudentdRequest, IUseCaseOutputPort<Result<UpsertStudentResponse>>, Result<UpsertStudentResponse>>, UseCase>();
+        services.AddTransient<IInputOutputPortUseCase<UpsertStudentRequest, IUseCaseOutputPort<Result<UpsertStudentResponse>>, Result<UpsertStudentResponse>>, UseCase>();
         return services;
     }
 }

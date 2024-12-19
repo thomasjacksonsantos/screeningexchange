@@ -5,16 +5,39 @@ using NSwag.Generation.Processors.Security;
 using NSwag.AspNetCore;
 using ScreeningExchange.App.Api;
 using ScreeningExchange.Infrastructure;
+using Microsoft.AspNetCore.Authentication;
+using ScreeningExchange.Hosts.Http.Firebase;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 IServiceCollection services = builder.Services;
 
+services.AddSingleton(
+    FirebaseApp.Create(new AppOptions
+    {
+        Credential = GoogleCredential.FromFile(
+            Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Firebase",
+                "firebase-config.json"
+            )
+        ),
+    })
+);
+
+services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddScheme<AuthenticationSchemeOptions, FirebaseAuthenticationHandler>(
+        JwtBearerDefaults.AuthenticationScheme,
+        (o) => { }
+    );
 services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
 
 services
     // .AddAuthenticationJwtBearer(s => s.SigningKey = "supersecret")
-    // .AddAuthorization()
+    .AddAuthorization()
     .AddFastEndpoints(o =>
     {
         o.DisableAutoDiscovery = true;
@@ -51,6 +74,14 @@ services.AddOpenApiDocument(configure =>
         };
     };
 
+    configure.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
+    {
+        Type = OpenApiSecuritySchemeType.ApiKey,
+        Name = "Authorization",
+        In = OpenApiSecurityApiKeyLocation.Header,
+        Description = "Insira o token JWT no formato: Bearer {your token}"
+    });
+
     configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
 });
 
@@ -68,8 +99,8 @@ services.AddCors(options =>
 
 WebApplication app = builder.Build();
 app
-    // .UseAuthentication()
-    // .UseAuthorization()
+    .UseAuthentication()
+    .UseAuthorization()
     .UseFastEndpoints()
     .UseOpenApi()
     .UseCors("AllowAll")

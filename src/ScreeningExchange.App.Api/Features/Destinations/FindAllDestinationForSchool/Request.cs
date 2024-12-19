@@ -3,7 +3,7 @@ using ScreeningExchange.App.Api.Features.Shared.Auth;
 
 namespace ScreeningExchange.App.Api.Features.Destinations.FindAllDestinationForSchool;
 
-public record FindAllDestinationForSchooldRequest(
+public record FindAllDestinationForSchoolIdRequest(
     int Page,
     int Total
 

@@ -1,6 +1,5 @@
 ﻿using FastEndpoints;
 using Microsoft.AspNetCore.Http;
-using ScreeningExchange.App.Api.Features.Shared.Auth;
 using ScreeningExchange.Infrastructure.Core;
 
 namespace ScreeningExchange.App.Api.Features.Schools.FindAllSchool;
@@ -12,13 +11,11 @@ public class Endpoint(IInputOutputPortUseCase<FindAllSchoolRequest, IUseCaseOutp
 
     public override void Configure()
     {
-        Put("api/v1/school/all");
-        // PreProcessor<AuthInterceptor<FindAllSchooldRequest>>();
-        AllowAnonymous();
-        Description(c => c.Accepts<FindAllSchoolResponse>()
+        Get("api/v1/school/all");
+        Description(c => c.Accepts<FindAllSchoolRequest>()
             .Produces<FindAllSchoolResponse>()
             .ProducesProblem(400)
-            .WithTags("School")
+            .WithTags("Schools")
             , clearDefaults: false);
     }
 

@@ -6,25 +6,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ScreeningExchange.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class addschool : Migration
+    public partial class addajuste : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<DateTime>(
-                name: "DateTimeFinished",
+            migrationBuilder.AddColumn<string>(
+                name: "UserId",
                 schema: "screeningexchange",
-                table: "Destination",
-                type: "datetime2",
+                table: "School",
+                type: "nvarchar(200)",
+                maxLength: 200,
                 nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                defaultValue: "");
 
             migrationBuilder.CreateTable(
-                name: "School",
+                name: "Agent",
                 schema: "screeningexchange",
                 columns: table => new
                 {
                     Id = table.Column<byte[]>(type: "varbinary(16)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Email_Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -33,7 +35,7 @@ namespace ScreeningExchange.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_School", x => x.Id);
+                    table.PrimaryKey("PK_Agent", x => x.Id);
                 });
         }
 
@@ -41,13 +43,13 @@ namespace ScreeningExchange.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "School",
+                name: "Agent",
                 schema: "screeningexchange");
 
             migrationBuilder.DropColumn(
-                name: "DateTimeFinished",
+                name: "UserId",
                 schema: "screeningexchange",
-                table: "Destination");
+                table: "School");
         }
     }
 }

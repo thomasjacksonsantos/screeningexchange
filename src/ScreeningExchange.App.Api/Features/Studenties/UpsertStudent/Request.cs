@@ -1,12 +1,11 @@
 ﻿
-using ScreeningExchange.App.Api.Features.Shared.Auth;
 
 namespace ScreeningExchange.App.Api.Features.Studenties.UpsertStudent;
 
-public record UpsertStudentdRequest(
+public record UpsertStudentRequest(
     string? Id,
     string Name,
-    string EmailStudent,
+    string StudentEmail,
     string Phone
 
-) : AuthRequest;
+);

@@ -1,6 +1,10 @@
 ﻿
 
 using Microsoft.Extensions.DependencyInjection;
+using ScreeningExchange.App.Api.Features.Accounts.SignIn;
+using ScreeningExchange.App.Api.Features.Accounts.SignUp;
+using ScreeningExchange.App.Api.Features.Agents.FindAgentById;
+using ScreeningExchange.App.Api.Features.Agents.UpsertAgent;
 using ScreeningExchange.App.Api.Features.Destinations.FindAllDestinationForSchool;
 using ScreeningExchange.App.Api.Features.Destinations.FindDestinationByStudentId;
 using ScreeningExchange.App.Api.Features.Destinations.UpsertDestination;
@@ -31,6 +35,10 @@ public static class DependencyBuilderModule
             .AddFindAllDestinationForSchoolFeature()
             .AddStudentFindAllSchoolFeature()
             .AddStudentFindSchoolByIdFeature()
-            .AddStudentUpsertSchoolFeature()
+            .AddUpsertSchoolFeature()
+            .AddSignUpFeature()
+            .AddSignInFeature()
+            .AddStudentUpsertAgentFeature()
+            .AddStudentFindAgentByIdFeature()
             ;
 }

@@ -13,9 +13,9 @@ public class Endpoint(IInputOutputPortUseCase<UpsertQuestiondRequest, IUseCaseOu
     public override void Configure()
     {
         Put("api/v1/question");
-        // PreProcessor<AuthInterceptor<UpsertQuestiondRequest>>();
+        PreProcessor<AuthInterceptor<UpsertQuestiondRequest>>();
         AllowAnonymous();
-        Description(c => c.Accepts<UpsertQuestionResponse>()
+        Description(c => c.Accepts<UpsertQuestiondRequest>()
             .Produces<UpsertQuestionResponse>()
             .ProducesProblem(400)
             .WithTags("Questions")
