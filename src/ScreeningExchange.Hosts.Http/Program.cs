@@ -93,7 +93,7 @@ services.AddCors(options =>
     {
         policy.WithOrigins("http://localhost:5174", 
             "https://screening-exchange-bsd3bzg9fkabg6eq.canadacentral-01.azurewebsites.net",
-            "https://purple-water-0001e740f.4.azurestaticapps.net/")
+            "https://purple-water-0001e740f.4.azurestaticapps.net")
              .AllowAnyMethod()
              .AllowAnyHeader()
              .AllowCredentials();
