@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ScreeningExchange.Infrastructure.DataAccess;
 
@@ -12,9 +13,11 @@ using ScreeningExchange.Infrastructure.DataAccess;
 namespace ScreeningExchange.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241225162250_add-linkdispatchers")]
+    partial class addlinkdispatchers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -155,17 +158,32 @@ namespace ScreeningExchange.Infrastructure.Migrations
                         {
                             b1.IsRequired();
 
-                            b1.Property<string>("Email")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                            b1.ComplexProperty<Dictionary<string, object>>("Email", "ScreeningExchange.Domain.Aggregates.LinkDispatchersAggregate.LinkDispatcher.Customer#Customer.Email#Email", b2 =>
+                                {
+                                    b2.IsRequired();
 
-                            b1.Property<string>("Name")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                    b2.Property<string>("Value")
+                                        .IsRequired()
+                                        .HasColumnType("nvarchar(max)");
+                                });
 
-                            b1.Property<string>("Phone")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                            b1.ComplexProperty<Dictionary<string, object>>("Name", "ScreeningExchange.Domain.Aggregates.LinkDispatchersAggregate.LinkDispatcher.Customer#Customer.Name#Name", b2 =>
+                                {
+                                    b2.IsRequired();
+
+                                    b2.Property<string>("Value")
+                                        .IsRequired()
+                                        .HasColumnType("nvarchar(max)");
+                                });
+
+                            b1.ComplexProperty<Dictionary<string, object>>("Phone", "ScreeningExchange.Domain.Aggregates.LinkDispatchersAggregate.LinkDispatcher.Customer#Customer.Phone#Phone", b2 =>
+                                {
+                                    b2.IsRequired();
+
+                                    b2.Property<string>("Value")
+                                        .IsRequired()
+                                        .HasColumnType("nvarchar(max)");
+                                });
                         });
 
                     b.ComplexProperty<Dictionary<string, object>>("Logs", "ScreeningExchange.Domain.Aggregates.LinkDispatchersAggregate.LinkDispatcher.Logs#List<Log>", b1 =>

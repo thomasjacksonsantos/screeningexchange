@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Azure;
 
 namespace ScreeningExchange.Infrastructure;
 
@@ -22,6 +23,7 @@ public static class DependencyBuilderModule
         services.AddConfigurations(configuration);
         services.AddIO();
         services.AddHttpClients(configuration);
+        services.ConfigureServiceBus(configuration);
         return services;
     }
 
@@ -31,6 +33,22 @@ public static class DependencyBuilderModule
         services.AddSingleton(c => c.GetService<IOptions<ApiConfig>>()!.Value);
 
         return services;
+    }
+
+    static string GetConnetion(string connection)
+    {
+        var conn = Environment.GetEnvironmentVariable($"SQLAZURECONNSTR_{connection}");
+        if (string.IsNullOrEmpty(conn))
+        {
+            conn = Environment.GetEnvironmentVariable($"ConnectionStrings_{connection}");
+        }
+
+        if (string.IsNullOrEmpty(conn))
+        {
+            conn = Environment.GetEnvironmentVariable(connection);
+        }
+
+        return conn ?? string.Empty;
     }
 
     private static IServiceCollection AddDbContext(this IServiceCollection services, string connectionString)
@@ -51,4 +69,7 @@ public static class DependencyBuilderModule
 
         return services;
     }
+
+    private static void ConfigureServiceBus(this IServiceCollection service, IConfiguration configuration)
+        => service.AddAzureClients(builder => builder.AddServiceBusClient(configuration.GetConnectionString("ServiceBusConnection")));
 }

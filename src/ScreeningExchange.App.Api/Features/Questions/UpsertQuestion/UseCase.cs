@@ -55,6 +55,12 @@ public class UseCase
             );
         }
 
+        if (input.SendToEmail)
+            buildQuestion.EnableSendToEmail();
+
+        if (input.SendToWhatsApp)
+            buildQuestion.EnableSendToWhatsApp();
+
         await buildQuestionRepository.AddAsync(buildQuestion);
 
         await unitOfWork.SaveChangesAsync(ct);

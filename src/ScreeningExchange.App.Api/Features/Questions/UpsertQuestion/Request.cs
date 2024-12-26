@@ -5,6 +5,8 @@ namespace ScreeningExchange.App.Api.Features.Questions.UpsertQuestion;
 
 public record UpsertQuestiondRequest(
     string? Id,
+    bool SendToEmail,
+    bool SendToWhatsApp,
     ICollection<QuestionRequest> Questions,
     ICollection<FlowRequest> Flows
 

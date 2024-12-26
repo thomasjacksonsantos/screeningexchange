@@ -6,6 +6,8 @@ namespace ScreeningExchange.Domain.Aggregates.QuestionsAggregate;
 public class BuildQuestion
 {
     public Ulid Id { get; private set; }
+    public bool SendToEmail { get; private set; }
+    public bool SendToWhatsApp { get; private set; }
     public List<QuestionCollection> Questions { get; private set; }
     public List<FlowCollection> Flows { get; private set; }
     [NotMapped]
@@ -138,6 +140,26 @@ public class BuildQuestion
         }
 
         return null;
+    }
+
+    public void EnableSendToEmail()
+    {
+        SendToEmail = true;
+    }
+
+    public void DisableSendToEmail()
+    {
+        SendToEmail = false;
+    }
+
+    public void EnableSendToWhatsApp()
+    {
+        SendToEmail = true;
+    }
+
+    public void DisableSendToWhatsApp()
+    {
+        SendToEmail = false;
     }
 
     public static BuildQuestion Create()

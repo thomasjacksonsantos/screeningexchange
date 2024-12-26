@@ -5,6 +5,7 @@ namespace ScreeningExchange.Domain.AuthsAggregate;
 
 public class AuthToken
 {
+    #pragma warning disable CS8618
     [JsonPropertyName("kind")]
     public string Kind { get; set; }
     [JsonPropertyName("localId")]   
@@ -21,4 +22,5 @@ public class AuthToken
     public string RefreshToken { get; set; }
     [JsonPropertyName("expiresIn")]
     public string ExpiresIn { get; set; }
+    #pragma warning restore CS8618
 }

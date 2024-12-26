@@ -8,6 +8,7 @@ using ScreeningExchange.App.Api.Features.Agents.UpsertAgent;
 using ScreeningExchange.App.Api.Features.Destinations.FindAllDestinationForSchool;
 using ScreeningExchange.App.Api.Features.Destinations.FindDestinationByStudentId;
 using ScreeningExchange.App.Api.Features.Destinations.UpsertDestination;
+using ScreeningExchange.App.Api.Features.LinkDisptachers.ImportExcelLinkDispatchers;
 using ScreeningExchange.App.Api.Features.Questions.FindAllFlows;
 using ScreeningExchange.App.Api.Features.Questions.FindAllQuestion;
 using ScreeningExchange.App.Api.Features.Questions.FindNextQuestionByAwnser;
@@ -40,5 +41,6 @@ public static class DependencyBuilderModule
             .AddSignInFeature()
             .AddStudentUpsertAgentFeature()
             .AddStudentFindAgentByIdFeature()
+            .AddImportExcelLinkDispatchersFeature()
             ;
 }

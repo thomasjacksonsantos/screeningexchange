@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using ScreeningExchange.Domain.Aggregates.AgentsAggregate;
 using ScreeningExchange.Domain.Aggregates.DestinationsAggregate;
+using ScreeningExchange.Domain.Aggregates.LinkDispatchersAggregate;
 using ScreeningExchange.Domain.Aggregates.QuestionsAggregate;
 using ScreeningExchange.Domain.Aggregates.SchoolsAggregate;
 using ScreeningExchange.Domain.Aggregates.StudentiesAggregate;
@@ -11,6 +12,7 @@ using ScreeningExchange.Infrastructure.DomainImplementation.Aggregates.AgentsAgg
 using ScreeningExchange.Infrastructure.DomainImplementation.Aggregates.AuthsAggregate;
 using ScreeningExchange.Infrastructure.DomainImplementation.Aggregates.BuildQuestionsAggregate;
 using ScreeningExchange.Infrastructure.DomainImplementation.Aggregates.DestinationsAggretation;
+using ScreeningExchange.Infrastructure.DomainImplementation.Aggregates.LinkDispatchersAggregate;
 using ScreeningExchange.Infrastructure.DomainImplementation.Aggregates.SchoolsAggregate;
 using ScreeningExchange.Infrastructure.DomainImplementation.Aggregates.StudentiesAggregate;
 
@@ -28,7 +30,7 @@ public static class DependencyBuilder
         services.AddTransient<ISchoolRepository, EfSchoolRepository>();
         services.AddTransient<IAgentRepository, EfAgentRepository>();
         services.AddTransient<IAuthRepository, FirebaseAuthenticationService>();
-
+        services.AddTransient<ILinkDispatcherRepository, EfLinkDispatcherRepository>();
         return services;
     }
 }

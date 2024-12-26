@@ -3,6 +3,7 @@ namespace ScreeningExchange.Infrastructure.Configuration;
 public class ApiConfig
 {
     public Email Email { get; set; } = new();
+    public WhatsApp WhatsApp { get; set; } = new();
     public BlobStorageConfig BlobStorage { get; set; } = new();
     public FirebaseAuthentication FirebaseAuthentication { get; set; } = new();
 }
@@ -15,6 +16,13 @@ public class Email
     public string From { get; set; } = string.Empty;
     public string DisplayName { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
+}
+
+public class WhatsApp
+{
+    public string AccountSid { get; set; } = string.Empty;
+    public string AuthToken { get; set; } = string.Empty;
+    public string NumberPhone { get; set; } = string.Empty;
 }
 
 public class BlobStorageConfig

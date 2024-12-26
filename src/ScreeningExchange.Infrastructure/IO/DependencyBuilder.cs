@@ -10,6 +10,9 @@ public static class DependencyBuilder
     {
         services.AddTransient<IStorage, BlobStorage>();
         services.AddTransient<IEmailSend, EmailSend>();
+        services.AddTransient<IExcelRead, ExcelOfficeOpenXml>();
+        services.AddTransient<IServiceBus, ServiceBus>();
+        services.AddTransient<IWhatsapp, WhatsAppRepository>();
         return services;
     }
 }
