@@ -28,4 +28,7 @@
   <ItemGroup>
     <Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ScreeningExchange.Infrastructure\ScreeningExchange.Infrastructure.csproj" />
+  </ItemGroup>
 </Project>

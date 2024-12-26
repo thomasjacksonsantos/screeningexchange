@@ -14,10 +14,10 @@ https://www.youtube.com/watch?v=jkTaHb0M4nw
 ****************************************************
 */
 namespace ScreeningExchange.Hosts.Http.Firebase;
-
 public class FirebaseAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
     private readonly FirebaseApp firebase;
+    #pragma warning disable CS0618
     public FirebaseAuthenticationHandler(
         IOptionsMonitor<AuthenticationSchemeOptions> options,
         ILoggerFactory logger,
@@ -34,7 +34,7 @@ public class FirebaseAuthenticationHandler : AuthenticationHandler<Authenticatio
         if (!Context.Request.Headers.ContainsKey("Authorization"))
             return AuthenticateResult.NoResult();
 
-        string token = Context.Request.Headers["Authorization"];
+        string token = Context.Request.Headers["Authorization"]!;
 
         if (string.IsNullOrWhiteSpace(token))
             return AuthenticateResult.NoResult();
@@ -68,4 +68,5 @@ public class FirebaseAuthenticationHandler : AuthenticationHandler<Authenticatio
         => claims.Select(
             c => new Claim(c.Key, c.Value?.ToString() ?? string.Empty)
         ).ToList();
+    #pragma warning restore CS8618
 }

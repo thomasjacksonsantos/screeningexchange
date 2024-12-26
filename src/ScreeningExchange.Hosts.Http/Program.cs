@@ -54,7 +54,7 @@ services
     .AddApiModule()
     .AddInfrastructureModule(
         builder.Configuration,
-        builder.Configuration.GetConnectionString("ConnectionsString")!
+        ScreeningExchange.Infrastructure.DependencyBuilderModule.ApplicationType.Api
     );
 
 services.AddOpenApiDocument(configure =>
