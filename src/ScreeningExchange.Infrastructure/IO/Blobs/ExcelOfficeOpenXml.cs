@@ -43,8 +43,7 @@ public sealed class ExcelOfficeOpenXml(IOptions<ApiConfig> config) : IExcelRead
                 var property = typeof(T).GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
                 if (property != null && property.CanWrite)
                 {
-                    var cellValue = worksheet.Cells[row, colIndex].Text;
-
+                    var cellValue = worksheet.Cells[row, colIndex].Value.ToString();                
                     // Converter o valor do Excel para o tipo da propriedade
                     object? convertedValue = Convert.ChangeType(cellValue, property.PropertyType);
                     property.SetValue(obj, convertedValue);

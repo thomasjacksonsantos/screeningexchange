@@ -4,6 +4,7 @@ using ScreeningExchange.Domain.Aggregates.LinkDispatchersAggregate;
 using ScreeningExchange.Domain.Aggregates.QuestionsAggregate;
 using ScreeningExchange.Infrastructure.Configuration;
 using ScreeningExchange.Infrastructure.Core;
+using ScreeningExchange.Infrastructure.DataAccess;
 using ScreeningExchange.Infrastructure.IO;
 
 namespace ScreeningExchange.App.Api.Features.LinkDisptachers.ImportExcelLinkDispatchers;
@@ -14,7 +15,7 @@ public class UseCase
     IBuildQuestionRepository buildQuestionRepository,
     IExcelRead excelRead,
     IServiceBus serviceBus,
-    IOptions<ApiConfig> config,
+    IUnitOfWork unitOfWork,
     IUseCaseOutputPort<Result<ImportExcelLinkDispatchersResponse>> outputPort
 )
     : IInputOutputPortUseCase<ImportExcelLinkDispatchersRequest, IUseCaseOutputPort<Result<ImportExcelLinkDispatchersResponse>>, Result<ImportExcelLinkDispatchersResponse>>
@@ -23,7 +24,7 @@ public class UseCase
     private readonly IBuildQuestionRepository buildQuestionRepository = buildQuestionRepository;
     private readonly IExcelRead excelRead = excelRead;
     private readonly IServiceBus serviceBus = serviceBus;
-    private readonly ApiConfig config = config.Value;
+    private readonly IUnitOfWork unitOfWork = unitOfWork;
     private readonly IUseCaseOutputPort<Result<ImportExcelLinkDispatchersResponse>> OutputPort = outputPort;
 
     public async ValueTask<Result<ImportExcelLinkDispatchersResponse>> Execute(
@@ -49,7 +50,7 @@ public class UseCase
                 customer,
                 "/form"
             );
-            
+
             linkDispatcher.EnableSendToEmail();
             linkDispatcher.EnableSendToWhatsapp();
 
@@ -58,9 +59,10 @@ public class UseCase
 
         await linkDispatcherRepository.AddBatchAsync(linkDispatchers);
 
-        var linkDispatchersSb = linkDispatchers.Select(c => c.Id.ToString());
+        var linkDispatchersSb = linkDispatchers.Select(c => new { LinkDispatcherId = c.Id.ToString() });
 
         await serviceBus.SendMultiAsync(linkDispatchersSb, "process-customer-link-dispatcher");
+        await unitOfWork.SaveChangesAsync(ct);
 
         return OutputPort.Ok(
             new ImportExcelLinkDispatchersResponse(

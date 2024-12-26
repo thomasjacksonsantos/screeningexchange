@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Azure;
+using Newtonsoft.Json;
 
 namespace ScreeningExchange.Infrastructure;
 
@@ -25,8 +26,12 @@ public static class DependencyBuilderModule
         ApplicationType applicationType
     )
     {
-        services.AddDbContext(GetSectionEnvironment("ConnectionsString")!);
+        services.AddConnections(
+            configuration,
+            applicationType
+        );
         services.AddRepositories();
+
         services.AddConfigurations(
             configuration,
             applicationType
@@ -40,6 +45,29 @@ public static class DependencyBuilderModule
             configuration,
             applicationType
         );
+        return services;
+    }
+
+    private static IServiceCollection AddConnections(
+        this IServiceCollection services,
+        IConfiguration configuration,
+        ApplicationType applicationType
+    )
+    {
+        switch (applicationType)
+        {
+            case ApplicationType.Api:
+                services.AddDbContext(configuration.GetConnectionString("ConnectionsString")!);
+                break;
+
+            case ApplicationType.AzureFunction:
+                services.AddDbContext(GetSectionEnvironment("ConnectionsString")!);
+                break;
+
+            default:
+                throw new NotImplementedException("Application type not implementation");
+        }
+
         return services;
     }
 
@@ -57,11 +85,11 @@ public static class DependencyBuilderModule
                 break;
 
             case ApplicationType.AzureFunction:
-                services.AddSingleton(c =>
-                {
-                    var settings = c.GetService<IOptions<ApiConfig>>()!.Value;
+                Console.WriteLine($"json settings Thomas => {Environment.GetEnvironmentVariable("Email_Smtp")!}");
 
-                    settings.Email = new Email
+                services.AddSingleton<ApiConfig>(new ApiConfig
+                {
+                    Email = new Email
                     {
                         DisplayName = Environment.GetEnvironmentVariable("Email_DisplayName")!,
                         From = Environment.GetEnvironmentVariable("Email_From")!,
@@ -69,22 +97,84 @@ public static class DependencyBuilderModule
                         Password = Environment.GetEnvironmentVariable("Email_Password")!,
                         Port = int.Parse(Environment.GetEnvironmentVariable("Email_Port")!),
                         Smtp = Environment.GetEnvironmentVariable("Email_Smtp")!,
-                    };
-
-                    settings.WhatsApp = new WhatsApp
+                    },
+                    WhatsApp = new WhatsApp
                     {
                         AccountSid = Environment.GetEnvironmentVariable("WhatsApp_AccountSid")!,
                         AuthToken = Environment.GetEnvironmentVariable("WhatsApp_AuthToken")!,
                         NumberPhone = Environment.GetEnvironmentVariable("WhatsApp_NumberPhone")!
-                    };
-                    settings.FirebaseAuthentication = new FirebaseAuthentication
+                    },
+                    FirebaseAuthentication = new FirebaseAuthentication
                     {
                         TokenUri = Environment.GetEnvironmentVariable("FirebaseAuthentication_TokenUri")!,
                         ServiceName = Environment.GetEnvironmentVariable("FirebaseAuthentication_ServiceName")!,
-                    };
+                    }
+                }
+                );
 
-                    return settings;
-                });
+
+
+                // services.AddSingleton(c => c.GetService<IOptions<ApiConfig>>()!.Value);
+
+                // services.AddOptions<ApiConfig>()
+                //     .Configure<IConfiguration>((settings, configuration) =>
+                //     {
+                //         configuration.GetSection(nameof(ApiConfig)).Bind(new ApiConfig
+                //         {
+                //             Email = new Email
+                //             {
+                //                 DisplayName = Environment.GetEnvironmentVariable("Email_DisplayName")!,
+                //                 From = Environment.GetEnvironmentVariable("Email_From")!,
+                //                 Login = Environment.GetEnvironmentVariable("Email_Login")!,
+                //                 Password = Environment.GetEnvironmentVariable("Email_Password")!,
+                //                 Port = int.Parse(Environment.GetEnvironmentVariable("Email_Port")!),
+                //                 Smtp = Environment.GetEnvironmentVariable("Email_Smtp")!,
+                //             },
+                //             WhatsApp = new WhatsApp
+                //             {
+                //                 AccountSid = Environment.GetEnvironmentVariable("WhatsApp_AccountSid")!,
+                //                 AuthToken = Environment.GetEnvironmentVariable("WhatsApp_AuthToken")!,
+                //                 NumberPhone = Environment.GetEnvironmentVariable("WhatsApp_NumberPhone")!
+                //             },
+                //             FirebaseAuthentication = new FirebaseAuthentication
+                //             {
+                //                 TokenUri = Environment.GetEnvironmentVariable("FirebaseAuthentication_TokenUri")!,
+                //                 ServiceName = Environment.GetEnvironmentVariable("FirebaseAuthentication_ServiceName")!,
+                //             }
+                //         });
+                //     });
+
+                // services.AddSingleton(c =>
+                // {
+
+                //     var settings = new ApiConfig();
+                //     Console.WriteLine($"settings => {settings}");
+
+                //     settings.Email = new Email
+                //     {
+                //         DisplayName = Environment.GetEnvironmentVariable("Email_DisplayName")!,
+                //         From = Environment.GetEnvironmentVariable("Email_From")!,
+                //         Login = Environment.GetEnvironmentVariable("Email_Login")!,
+                //         Password = Environment.GetEnvironmentVariable("Email_Password")!,
+                //         Port = int.Parse(Environment.GetEnvironmentVariable("Email_Port")!),
+                //         Smtp = Environment.GetEnvironmentVariable("Email_Smtp")!,
+                //     };
+
+                //     settings.WhatsApp = new WhatsApp
+                //     {
+                //         AccountSid = Environment.GetEnvironmentVariable("WhatsApp_AccountSid")!,
+                //         AuthToken = Environment.GetEnvironmentVariable("WhatsApp_AuthToken")!,
+                //         NumberPhone = Environment.GetEnvironmentVariable("WhatsApp_NumberPhone")!
+                //     };
+                //     settings.FirebaseAuthentication = new FirebaseAuthentication
+                //     {
+                //         TokenUri = Environment.GetEnvironmentVariable("FirebaseAuthentication_TokenUri")!,
+                //         ServiceName = Environment.GetEnvironmentVariable("FirebaseAuthentication_ServiceName")!,
+                //     };
+
+                //     Console.WriteLine($"json settings => {JsonConvert.SerializeObject(settings)}");
+                //     return settings;
+                // });
                 break;
 
             default:

@@ -5,21 +5,27 @@ using Microsoft.Extensions.Options;
 
 namespace ScreeningExchange.Infrastructure.IO.Blobs;
 
-public sealed class EmailSend(IOptions<ApiConfig> config) : IEmailSend
+public sealed class EmailSend : IEmailSend
 {
-    private readonly ApiConfig Config = config.Value;
+    private readonly ApiConfig apiConfig;
+
+    public EmailSend(ApiConfig apiConfig)
+    {
+        this.apiConfig = apiConfig;
+    }
+
     public async ValueTask<(bool Success, string Message)> SendAsync(EmailParams emailParams)
     {
         try
         {
-            using var smtpClient = new SmtpClient(Config.Email.Smtp);
-            smtpClient.Port = Config.Email.Port;
+            using var smtpClient = new SmtpClient(apiConfig.Email.Smtp);
+            smtpClient.Port = apiConfig.Email.Port;
             smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new NetworkCredential(Config.Email.Login, Config.Email.Password);
+            smtpClient.Credentials = new NetworkCredential(apiConfig.Email.Login, apiConfig.Email.Password);
 
             var emailMessage = new MailMessage
             {
-                From = new MailAddress(Config.Email.From, Config.Email.DisplayName),
+                From = new MailAddress(apiConfig.Email.From, apiConfig.Email.DisplayName),
                 Subject = emailParams.Subject,
                 Body = emailParams.Message,
                 IsBodyHtml = true

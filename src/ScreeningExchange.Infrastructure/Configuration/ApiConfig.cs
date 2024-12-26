@@ -2,20 +2,20 @@ namespace ScreeningExchange.Infrastructure.Configuration;
 
 public class ApiConfig
 {
-    public Email Email { get; set; } = new();
-    public WhatsApp WhatsApp { get; set; } = new();
-    public BlobStorageConfig BlobStorage { get; set; } = new();
-    public FirebaseAuthentication FirebaseAuthentication { get; set; } = new();
+    public Email Email { get; set; }
+    public WhatsApp WhatsApp { get; set; }
+    public BlobStorageConfig BlobStorage { get; set; }
+    public FirebaseAuthentication FirebaseAuthentication { get; set; }
 }
 
 public class Email
 {
-    public string Smtp { get; set; } = string.Empty;
+    public string Smtp { get; set; }
     public int Port { get; set; }
-    public string Login { get; set; } = string.Empty;
-    public string From { get; set; } = string.Empty;
-    public string DisplayName { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
+    public string Login { get; set; }
+    public string From { get; set; }
+    public string DisplayName { get; set; }
+    public string Password { get; set; }
 }
 
 public class WhatsApp

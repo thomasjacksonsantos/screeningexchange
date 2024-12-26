@@ -1,7 +1,4 @@
-using System;
 using System.Text;
-using System.Text.Unicode;
-using System.Threading.Tasks;
 using Azure.Messaging.ServiceBus;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
@@ -44,10 +41,10 @@ namespace ScreeningExchange.App.Function
             CancellationToken ct)
         {
             logger.LogInformation("Message ID: {id}", message.MessageId);
-            
-            var content = Encoding.UTF8.GetString(message.Body);
 
-            var linkDispatcher = await linkDispatcherRepository.FindAsync(Ulid.Parse(content));
+            var jObject = JObject.Parse(Encoding.UTF8.GetString(message.Body));
+
+            var linkDispatcher = await linkDispatcherRepository.FindAsync(Ulid.Parse(jObject.SelectToken("LinkDispatcherId")!.ToString()));
 
             if (linkDispatcher!.SendToEmail)
             {

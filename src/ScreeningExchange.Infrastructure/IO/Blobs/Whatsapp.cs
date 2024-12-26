@@ -10,8 +10,8 @@ namespace ScreeningExchange.Infrastructure.IO.Blobs;
 public class WhatsAppRepository : IWhatsapp
 {
     private readonly ApiConfig apiConfig;
-    public WhatsAppRepository(IOptions<ApiConfig> apiConfig)
-        => (this.apiConfig) = (apiConfig.Value);
+    public WhatsAppRepository(ApiConfig apiConfig)
+        => (this.apiConfig) = (apiConfig);
 
     CreateMessageOptions CreateMessageOptions(long number)
         => new CreateMessageOptions(new Twilio.Types.PhoneNumber(FormatNumberTo(number)));
