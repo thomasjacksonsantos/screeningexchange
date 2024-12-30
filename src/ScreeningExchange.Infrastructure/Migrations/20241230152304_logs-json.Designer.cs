@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ScreeningExchange.Infrastructure.DataAccess;
 
@@ -12,9 +13,11 @@ using ScreeningExchange.Infrastructure.DataAccess;
 namespace ScreeningExchange.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241230152304_logs-json")]
+    partial class logsjson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -328,6 +331,8 @@ namespace ScreeningExchange.Infrastructure.Migrations
                             b1.HasKey("LinkDispatcherId");
 
                             b1.ToTable("LinkDispatcher", "screeningexchange");
+
+                            b1.ToJson("LogJson");
 
                             b1.WithOwner()
                                 .HasForeignKey("LinkDispatcherId");

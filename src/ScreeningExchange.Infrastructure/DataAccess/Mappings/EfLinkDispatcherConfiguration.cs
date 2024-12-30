@@ -1,6 +1,7 @@
 
 
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ScreeningExchange.Domain.Aggregates.LinkDispatchersAggregate;
@@ -26,10 +27,6 @@ public class EfLinkDispatcherConfiguration : IEntityTypeConfiguration<LinkDispat
 
         builder.ComplexProperty(c => c.Customer);
 
-        builder.Property(c => c.Logs)
-            .HasConversion(
-                v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null!),
-                v => JsonSerializer.Deserialize<List<Log>>(v, (JsonSerializerOptions)null!)!);
-
+        builder.OwnsOne(c => c.Logs);
     }
 }

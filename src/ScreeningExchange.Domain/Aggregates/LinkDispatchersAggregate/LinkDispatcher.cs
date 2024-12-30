@@ -17,7 +17,7 @@ public class LinkDispatcher
     public bool WhatsappSentSuccess { get; private set; }
     public bool WasRead { get; private set; }
     public LinkDispatcherStatusEnum Status { get; private set; }
-    public ICollection<Log> Logs { get; private set; }
+    public List<Log>? Logs { get; set; }
     public DateTime CreatedOn { get; private set; }
     public DateTime? UpdatedOn { get; private set; }
 
@@ -39,8 +39,7 @@ public class LinkDispatcher
         BuildQuestionId = buildQuestion.Id;
         Customer = customer;
         Link = link;
-        Logs = new List<Log>();
-        CreatedOn = DateTime.Now;        
+        CreatedOn = DateTime.Now;
     }
 
     public void EnableSendToEmail()

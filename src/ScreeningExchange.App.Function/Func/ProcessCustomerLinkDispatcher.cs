@@ -77,9 +77,9 @@ namespace ScreeningExchange.App.Function
                 );
 
                 if (string.IsNullOrEmpty(whatsappResult.ErrorMessage))
-                    linkDispatcher.WasEmailSentSuccess();
+                    linkDispatcher.WasWhatsappSentSuccess();
                 else
-                    linkDispatcher.ErroSendingEmail();
+                    linkDispatcher.ErroSendingWhatsapp();
 
                 linkDispatcher.CreateLog(
                     Log.Create(
