@@ -24,15 +24,25 @@ public class WhatsAppRepository : IWhatsapp
 
     public async ValueTask<(string ErrorMessage, string ErrorCode)> SendAsync(WhatsappParams whatsappParams)
     {
-        TwilioClient.Init(apiConfig.WhatsApp.AccountSid, apiConfig.WhatsApp.AuthToken);
-        var messageOptions = CreateMessageOptions(whatsappParams.ToNumber);
-        messageOptions.From = FormatNumberFrom(apiConfig.WhatsApp.NumberPhone);
-        messageOptions.Body = whatsappParams.Message;
-        var response = await MessageResource.CreateAsync(messageOptions);
+        try
+        {
+            TwilioClient.Init(apiConfig.WhatsApp.AccountSid, apiConfig.WhatsApp.AuthToken);
+            var messageOptions = CreateMessageOptions(whatsappParams.ToNumber);
+            messageOptions.From = FormatNumberFrom(apiConfig.WhatsApp.NumberPhone);
+            messageOptions.Body = whatsappParams.Message;
+            var response = await MessageResource.CreateAsync(messageOptions);
 
-        return (
-            response.ErrorMessage,
-            response.ErrorCode?.ToString() ?? string.Empty
-        );
+            return (
+                response.ErrorMessage,
+                response.ErrorCode?.ToString() ?? string.Empty
+            );
+        }
+        catch (System.Exception ex)
+        {
+            return (
+                ex.Message,
+                string.Empty
+            );
+        }
     }
 }

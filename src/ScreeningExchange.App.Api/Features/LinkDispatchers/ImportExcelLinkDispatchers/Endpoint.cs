@@ -15,7 +15,6 @@ public class Endpoint(IInputOutputPortUseCase<ImportExcelLinkDispatchersRequest,
         Post("api/v1/link-dispatchers/import/excel");
         // PreProcessor<AuthInterceptor<ImportExcelLinkDispatchersRequest>>();
         AllowAnonymous();
-        AllowFileUploads();
         Description(c => c.Accepts<ImportExcelLinkDispatchersRequest>()
             .Produces<ImportExcelLinkDispatchersResponse>()
             .ProducesProblem(400)
