@@ -17,7 +17,7 @@ public class LinkDispatcher
     public bool WhatsappSentSuccess { get; private set; }
     public bool WasRead { get; private set; }
     public LinkDispatcherStatusEnum Status { get; private set; }
-    public List<Log>? Logs { get; set; }
+    public List<Log>? Logs { get; private set; }
     public DateTime CreatedOn { get; private set; }
     public DateTime? UpdatedOn { get; private set; }
 

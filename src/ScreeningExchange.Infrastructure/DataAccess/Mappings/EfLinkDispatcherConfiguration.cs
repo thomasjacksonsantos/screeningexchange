@@ -27,6 +27,9 @@ public class EfLinkDispatcherConfiguration : IEntityTypeConfiguration<LinkDispat
 
         builder.ComplexProperty(c => c.Customer);
 
-        builder.OwnsOne(c => c.Logs);
+        builder.OwnsMany(c => c.Logs, log =>
+        {
+            log.ToJson();
+        });
     }
 }
