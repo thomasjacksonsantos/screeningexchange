@@ -6,7 +6,7 @@ using ScreeningExchange.App.Api.Features.Shared.Auth;
 namespace ScreeningExchange.App.Api.Features.LinkDisptachers.ImportExcelLinkDispatchers;
 
 public record ImportExcelLinkDispatchersRequest(
-    [FromRoute] string BuildQuestionId,
+    string BuildQuestionId,
     [FromForm] IFormFile File
 ) : AuthRequest;
 

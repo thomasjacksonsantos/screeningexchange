@@ -44,7 +44,6 @@ public class UseCase
 
         customers.ForEach(customer =>
         {
-
             var linkDispatcher = LinkDispatcher.Create(
                 buildQuestion,
                 customer,

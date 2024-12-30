@@ -1,5 +1,6 @@
 namespace ScreeningExchange.Infrastructure.Configuration;
 
+#pragma warning disable CS8618
 public class ApiConfig
 {
     public Email Email { get; set; }
@@ -36,3 +37,4 @@ public class FirebaseAuthentication
     public string TokenUri { get; set; } = string.Empty;
     public string ServiceName { get; set; } = string.Empty;
 }
+#pragma warning restore CS8618
